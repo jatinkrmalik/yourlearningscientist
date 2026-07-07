@@ -196,6 +196,13 @@ body {
 }
 
 /* --- Buttons --- */
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -219,6 +226,19 @@ body {
   box-shadow: 0 12px 32px -8px rgba(30, 58, 138, 0.6), 0 6px 12px -4px rgba(59, 130, 246, 0.4);
 }
 .btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.btn-secondary:active { transform: translateY(0); }
 
 /* --- Topics --- */
 .topics {
