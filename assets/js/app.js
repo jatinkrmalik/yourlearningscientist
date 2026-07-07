@@ -1,18 +1,30 @@
 // Your Learning Scientist — landing page interactions
 // Keep this tiny. No frameworks. Progressive enhancement.
+// IMPORTANT: Content is always visible by default. Reveal-on-scroll
+// is an additive animation only — never hide content if JS fails.
 
 (function () {
   'use strict';
 
-  // 1) Reveal-on-scroll for cards and sections
+  // 1) Reveal-on-scroll: only animate elements already in the viewport
+  //    (or just below it). Anything off-screen stays visible — the
+  //    IO triggers immediately as the user scrolls.
   const targets = document.querySelectorAll('.section, .video-card, .link-card, .stats .stat');
-  targets.forEach((el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(12px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  });
 
-  if ('IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Only hide elements that are NOT yet near the viewport, so the
+    // first-paint content is always visible.
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    targets.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top > viewportH * 0.9) {
+        // Off-screen below: hide for the reveal animation
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+      }
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -23,25 +35,22 @@
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
     targets.forEach((el) => io.observe(el));
-  } else {
-    // No IO support: just show
-    targets.forEach((el) => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
   }
+  // If IO is unsupported or reduced motion is requested, content is
+  // already visible — no JS needed.
 
-  // 2) Animated stat counters
+  // 2) Animated stat counters (only run on visible elements)
   const statNums = document.querySelectorAll('.stat-num');
   const animateNum = (el) => {
     const raw = el.textContent.trim();
-    // Match patterns like "24.7K+", "1.2M+", "8+", "15"
-    const m = raw.match(/^([\d.]+)([KM]?)\+?$/);
+    // Match patterns like "24.7K+", "1.2M+", "8+", "1,429", "15"
+    const m = raw.match(/^([\d,.]+)([KM]?)\+?$/);
     if (!m) return;
-    const target = parseFloat(m[1]);
+    const targetStr = m[1].replace(/,/g, '');
+    const target = parseFloat(targetStr);
     const suffix = m[2];
     const plus = raw.endsWith('+');
     const multiplier = suffix === 'K' ? 1e3 : suffix === 'M' ? 1e6 : 1;
@@ -50,7 +59,10 @@
     const start = performance.now();
     const fmt = (n) => {
       const v = n / multiplier;
-      return (Number.isInteger(target) ? Math.round(v) : v.toFixed(1)) + suffix + (plus ? '+' : '');
+      const numStr = (Number.isInteger(target) ? Math.round(v).toString() : v.toFixed(1));
+      // Re-add commas for thousands
+      const withCommas = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return withCommas + suffix + (plus ? '+' : '');
     };
     const step = (now) => {
       const t = Math.min(1, (now - start) / dur);
@@ -74,12 +86,13 @@
       { threshold: 0.5 }
     );
     statNums.forEach((el) => numIO.observe(el));
+  } else {
+    // No IO: just show the final value (already in HTML)
   }
 
   // 3) Track outbound link clicks (light analytics — no third-party)
   document.querySelectorAll('a[target="_blank"]').forEach((a) => {
     a.addEventListener('click', () => {
-      // Placeholder — wire to Plausible/Fathom/Umami if needed
       const url = a.href;
       try {
         if (window.console && console.debug) {
