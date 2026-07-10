@@ -211,7 +211,7 @@
       </h1>
 
       <p class="subline">
-        I read the developmental science so you don't have to — then tell you what it means for the kid in front of you.
+        I read the developmental science so you don't have to. Then I tell you what it means for the kid in front of you.
       </p>
 
       <div class="identity">
@@ -344,14 +344,11 @@
         </div>
 
         <div class="yt-player-wrap">
-          <!--
-            Official uploads playlist for channel UCn2O02ZcnIawo90tQ_4sw7g
-            (UC… → UU… is YouTube’s auto “Uploads” playlist)
-          -->
+          <!-- Featured Short (highest views) — clearer than empty playlist chrome -->
           <iframe
             class="yt-player"
-            src="https://www.youtube.com/embed/videoseries?list=UUn2O02ZcnIawo90tQ_4sw7g"
-            title="Your Learning Scientist — latest on YouTube"
+            src="https://www.youtube.com/embed/MPU8haV5ovY"
+            title="Better than screens: 5 hands-on gadgets — Your Learning Scientist"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
@@ -360,7 +357,7 @@
         </div>
 
         <p class="yt-widget-note">
-          Live channel player. Browse more on
+          Featured Short. More on
           <a href="https://www.youtube.com/@YourLearningScientist" target="_blank" rel="noopener">YouTube</a>.
         </p>
       </div>
@@ -443,60 +440,60 @@
       </div>
     </section>
 
-    <!-- Instagram profile embed (official oEmbed) -->
+    <!-- Instagram — theme-aware card (official embed is always light and clashes in dark mode) -->
     <section id="instagram" class="section instagram" aria-labelledby="instagram-title">
       <header class="section-head">
         <h2 id="instagram-title" class="section-title">Instagram</h2>
-        <p class="section-deck">
-          <a class="inline-handle" href="https://www.instagram.com/yourlearningscientist" target="_blank" rel="noopener">@yourlearningscientist</a>
-          · Building better brains, in short form.
-        </p>
+        <p class="section-deck">Short-form research, same voice as the channel.</p>
       </header>
 
-      <div class="ig-embed-wrap">
-        <!-- Official Instagram profile embed. Hydrated by embed.js -->
-        <blockquote
-          class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/yourlearningscientist/?utm_source=ig_embed&amp;utm_campaign=loading"
-          data-instgrm-version="14"
-          style="background:#FFF; border:0; border-radius:12px; box-shadow:0 1px 2px rgba(11,29,54,0.04),0 8px 24px rgba(11,29,54,0.06); margin:0 auto; max-width:440px; min-width:280px; padding:0; width:100%;"
-        >
-          <div style="padding:16px;">
-            <a
-              href="https://www.instagram.com/yourlearningscientist/?utm_source=ig_embed&amp;utm_campaign=loading"
-              style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;"
-              target="_blank"
-              rel="noopener"
-            >
-              <div style="display:flex; flex-direction:row; align-items:center;">
-                <div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:40px; margin-right:14px; width:40px;"></div>
-                <div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;">
-                  <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; margin-bottom:6px; width:100px;"></div>
-                  <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; width:60px;"></div>
-                </div>
-              </div>
-              <div style="padding:19% 0;"></div>
-              <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-weight:550; line-height:18px;">
-                View this profile on Instagram
-              </div>
-              <div style="padding:12.5% 0;"></div>
-            </a>
-            <p class="ig-embed-fallback">
-              <a href="https://www.instagram.com/yourlearningscientist" target="_blank" rel="noopener">
-                @yourlearningscientist on Instagram
-              </a>
-            </p>
+      <a
+        class="ig-card"
+        href="https://www.instagram.com/yourlearningscientist"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="ig-card-top">
+          <img
+            class="ig-card-avatar"
+            src="/assets/images/channel-avatar.jpg"
+            alt=""
+            width="56"
+            height="56"
+            loading="lazy"
+          />
+          <div class="ig-card-meta">
+            <p class="ig-card-handle">@yourlearningscientist</p>
+            <p class="ig-card-name">Your Learning Scientist</p>
           </div>
-        </blockquote>
-      </div>
-
-      <noscript>
-        <p class="section-deck">
-          <a href="https://www.instagram.com/yourlearningscientist" target="_blank" rel="noopener">
-            Open @yourlearningscientist on Instagram →
-          </a>
-        </p>
-      </noscript>
+          <span class="ig-card-badge" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+        </div>
+        <p class="ig-card-bio">Building better brains. I speak research.</p>
+        <dl class="ig-card-stats">
+          <div>
+            <dt>1.4K</dt>
+            <dd>Followers</dd>
+          </div>
+          <div>
+            <dt>32</dt>
+            <dd>Posts</dd>
+          </div>
+          <div>
+            <dt>USA · India</dt>
+            <dd>Based</dd>
+          </div>
+        </dl>
+        <span class="ig-card-cta">
+          Follow on Instagram
+          <span aria-hidden="true">→</span>
+        </span>
+      </a>
     </section>
 
     <footer class="footer">

@@ -156,21 +156,7 @@
     });
   }
 
-  // Instagram profile embed
-  var igSection = document.querySelector('#instagram .instagram-media');
-  loadScriptWhenVisible(
-    igSection,
-    'https://www.instagram.com/embed.js',
-    function () {
-      return !!(window.instgrm && window.instgrm.Embeds);
-    }
-  ).then(function (ok) {
-    if (ok && window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-  });
-
-  // YouTube subscribe button
+  // YouTube subscribe button (official Google widget)
   var ytWidget = document.querySelector('#youtube-widget');
   loadScriptWhenVisible(
     ytWidget,
