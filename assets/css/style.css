@@ -523,6 +523,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: 1.25rem;
   width: 100%;
 }
+
+.watch-note {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.4;
+}
+.watch-note a {
+  color: var(--navy);
+  font-weight: 700;
+  border-bottom: 1.5px solid var(--mark);
+}
+.watch-note a:hover {
+  color: var(--signal);
+}
 .btn-icon { flex-shrink: 0; }
 .btn > span:not(.btn-icon):not(.btn-chevron) {
   flex: 1;
