@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Your Learning Scientist</title>
+  <meta name="description" content="That page is off the curriculum. Head back to Your Learning Scientist." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://yourlearningscientist.com/" />
+  <meta name="theme-color" content="#0C7A62" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0B100E" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,600,700&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('yls-theme');
+        var theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root, [data-theme="light"] {
+      color-scheme: light;
+      --paper: #F5F4F0;
+      --ink: #141A16;
+      --muted: #3E4A43;
+      --navy: #0A6B56;
+      --navy-fill: #0C7A62;
+      --mark: #D2EB4A;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #0B100E;
+      --ink: #F0F5F2;
+      --muted: #A8B8B0;
+      --navy: #5ED9B8;
+      --navy-fill: #14967A;
+      --mark: #D2EB4A;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --paper: #0B100E;
+        --ink: #F0F5F2;
+        --muted: #A8B8B0;
+        --navy: #5ED9B8;
+        --navy-fill: #14967A;
+        --mark: #D2EB4A;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { text-align: center; max-width: 420px; }
+    .code {
+      font-weight: 700;
+      font-size: 4.5rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    h1 .mark {
+      background-image: linear-gradient(
+        transparent 55%,
+        var(--mark) 55%,
+        var(--mark) 96%,
+        transparent 96%
+      );
+      padding: 0 0.1em;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0.875rem 1.5rem;
+      background: var(--navy-fill);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid var(--navy-fill);
+      transition: filter 0.15s ease, box-shadow 0.15s ease;
+    }
+    a:hover {
+      box-shadow: inset 4px 0 0 var(--mark);
+      filter: brightness(1.05);
+    }
+    a:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <h1>That page is <span class="mark">off the curriculum</span>.</h1>
+    <p>The link you followed doesn't lead anywhere. Plenty to explore on the homepage though.</p>
+    <a href="/">← Back to Your Learning Scientist</a>
+  </div>
+</body>
+</html>
