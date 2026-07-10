@@ -12,6 +12,12 @@
   "categories": ["education", "lifestyle"],
   "icons": [
     {
+      "src": "/assets/images/yls-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
       "src": "/assets/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
