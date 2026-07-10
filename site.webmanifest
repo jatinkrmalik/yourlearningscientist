@@ -9,14 +9,11 @@
   "background_color": "#F3F5F9",
   "theme_color": "#12358A",
   "lang": "en",
-  "categories": ["education", "lifestyle"],
+  "categories": [
+    "education",
+    "lifestyle"
+  ],
   "icons": [
-    {
-      "src": "/assets/images/yls-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
     {
       "src": "/assets/images/icon-192.png",
       "sizes": "192x192",
