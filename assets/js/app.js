@@ -30,37 +30,77 @@
     window.addEventListener('resize', update, { passive: true });
   }
 
-  // Official Instagram profile embed — load embed.js when section is near view
-  const igSection = document.querySelector('#instagram .instagram-media');
-  if (!igSection) return;
-
-  let loaded = false;
-  const loadInstagram = () => {
-    if (loaded) return;
-    loaded = true;
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.instagram.com/embed.js';
-    script.onload = () => {
-      if (window.instgrm && window.instgrm.Embeds) {
-        window.instgrm.Embeds.process();
+  /**
+   * Lazy-load a third-party script when `el` nears the viewport.
+   * Returns a promise that resolves after load (or immediately if already present).
+   */
+  function loadScriptWhenVisible(el, src, globalCheck) {
+    return new Promise((resolve) => {
+      if (!el) {
+        resolve(false);
+        return;
       }
-    };
-    document.body.appendChild(script);
-  };
+      if (globalCheck && globalCheck()) {
+        resolve(true);
+        return;
+      }
 
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          loadInstagram();
-          io.disconnect();
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+        if (globalCheck && globalCheck()) {
+          resolve(true);
+          return;
         }
-      },
-      { rootMargin: '200px 0px' }
-    );
-    io.observe(igSection);
-  } else {
-    loadInstagram();
+        const existing = document.querySelector('script[src="' + src + '"]');
+        if (existing) {
+          existing.addEventListener('load', () => resolve(true));
+          if (globalCheck && globalCheck()) resolve(true);
+          return;
+        }
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = src;
+        script.onload = () => resolve(true);
+        script.onerror = () => resolve(false);
+        document.body.appendChild(script);
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        start();
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            start();
+            io.disconnect();
+          }
+        },
+        { rootMargin: '200px 0px' }
+      );
+      io.observe(el);
+    });
   }
+
+  // Official Instagram profile embed
+  const igSection = document.querySelector('#instagram .instagram-media');
+  loadScriptWhenVisible(
+    igSection,
+    'https://www.instagram.com/embed.js',
+    () => !!(window.instgrm && window.instgrm.Embeds)
+  ).then((ok) => {
+    if (ok && window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  });
+
+  // Official YouTube subscribe button (Google platform.js + g-ytsubscribe)
+  const ytWidget = document.querySelector('#youtube-widget');
+  loadScriptWhenVisible(
+    ytWidget,
+    'https://apis.google.com/js/platform.js',
+    () => !!(window.gapi || document.querySelector('.yt-widget-bar iframe'))
+  );
 })();
