@@ -243,12 +243,31 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .topbar-nav {
   display: flex;
-  gap: 0.85rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--muted);
+  align-items: center;
+  gap: 0.35rem;
 }
-.topbar-nav a:hover { color: var(--navy); }
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: var(--muted);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.social-icon:hover {
+  color: var(--navy);
+  background: var(--surface-2);
+}
+.social-icon:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+.social-icon svg {
+  display: block;
+}
 
 /* Theme toggle */
 .theme-toggle {
