@@ -1,13 +1,81 @@
-// Your Learning Scientist — minimal interactions
+// Your Learning Scientist — interactions + theme
 (function () {
   'use strict';
 
+  var THEME_KEY = 'yls-theme';
+
+  function systemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function getTheme() {
+    var attr = document.documentElement.getAttribute('data-theme');
+    if (attr === 'light' || attr === 'dark') return attr;
+    try {
+      var saved = localStorage.getItem(THEME_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch (e) {}
+    return systemTheme();
+  }
+
+  function setTheme(theme, persist) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (persist) {
+      try {
+        localStorage.setItem(THEME_KEY, theme);
+      } catch (e) {}
+    }
+
+    // Generic theme-color for browsers that ignore media queries
+    var generic = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (!generic) {
+      generic = document.createElement('meta');
+      generic.setAttribute('name', 'theme-color');
+      document.head.appendChild(generic);
+    }
+    generic.setAttribute('content', theme === 'dark' ? '#0A0F18' : '#12358A');
+
+    var btn = document.getElementById('theme-toggle');
+    if (btn) {
+      btn.setAttribute(
+        'aria-label',
+        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+      );
+      btn.setAttribute('title', theme === 'dark' ? 'Light mode' : 'Dark mode');
+    }
+  }
+
+  // Sync UI to current theme (do not force-persist system default)
+  setTheme(getTheme(), false);
+
+  var toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      setTheme(getTheme() === 'dark' ? 'light' : 'dark', true);
+    });
+  }
+
+  // Follow OS only when the user has not chosen explicitly
+  try {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function () {
+      var saved = null;
+      try {
+        saved = localStorage.getItem(THEME_KEY);
+      } catch (e) {}
+      if (saved !== 'light' && saved !== 'dark') {
+        setTheme(systemTheme(), false);
+      }
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  } catch (e) {}
   // Smooth scroll for in-page anchors
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (event) => {
-      const href = anchor.getAttribute('href');
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (event) {
+      var href = anchor.getAttribute('href');
       if (!href || href.length < 2) return;
-      const target = document.querySelector(href);
+      var target = document.querySelector(href);
       if (!target) return;
       event.preventDefault();
       target.scrollIntoView({
@@ -19,23 +87,19 @@
     });
   });
 
-  // Horizontal scroller state (optional styling hook)
-  const scroller = document.querySelector('.video-scroller');
+  // Horizontal scroller state
+  var scroller = document.querySelector('.video-scroller');
   if (scroller) {
-    const update = () => {
-      const max = scroller.scrollWidth - scroller.clientWidth;
+    var update = function () {
+      var max = scroller.scrollWidth - scroller.clientWidth;
       scroller.classList.toggle('can-scroll', max > 4);
     };
     update();
     window.addEventListener('resize', update, { passive: true });
   }
 
-  /**
-   * Lazy-load a third-party script when `el` nears the viewport.
-   * Returns a promise that resolves after load (or immediately if already present).
-   */
   function loadScriptWhenVisible(el, src, globalCheck) {
-    return new Promise((resolve) => {
+    return new Promise(function (resolve) {
       if (!el) {
         resolve(false);
         return;
@@ -45,25 +109,31 @@
         return;
       }
 
-      let started = false;
-      const start = () => {
+      var started = false;
+      var start = function () {
         if (started) return;
         started = true;
         if (globalCheck && globalCheck()) {
           resolve(true);
           return;
         }
-        const existing = document.querySelector('script[src="' + src + '"]');
+        var existing = document.querySelector('script[src="' + src + '"]');
         if (existing) {
-          existing.addEventListener('load', () => resolve(true));
+          existing.addEventListener('load', function () {
+            resolve(true);
+          });
           if (globalCheck && globalCheck()) resolve(true);
           return;
         }
-        const script = document.createElement('script');
+        var script = document.createElement('script');
         script.async = true;
         script.src = src;
-        script.onload = () => resolve(true);
-        script.onerror = () => resolve(false);
+        script.onload = function () {
+          resolve(true);
+        };
+        script.onerror = function () {
+          resolve(false);
+        };
         document.body.appendChild(script);
       };
 
@@ -71,9 +141,11 @@
         start();
         return;
       }
-      const io = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((e) => e.isIntersecting)) {
+      var io = new IntersectionObserver(
+        function (entries) {
+          if (entries.some(function (e) {
+            return e.isIntersecting;
+          })) {
             start();
             io.disconnect();
           }
@@ -84,23 +156,27 @@
     });
   }
 
-  // Official Instagram profile embed
-  const igSection = document.querySelector('#instagram .instagram-media');
+  // Instagram profile embed
+  var igSection = document.querySelector('#instagram .instagram-media');
   loadScriptWhenVisible(
     igSection,
     'https://www.instagram.com/embed.js',
-    () => !!(window.instgrm && window.instgrm.Embeds)
-  ).then((ok) => {
+    function () {
+      return !!(window.instgrm && window.instgrm.Embeds);
+    }
+  ).then(function (ok) {
     if (ok && window.instgrm && window.instgrm.Embeds) {
       window.instgrm.Embeds.process();
     }
   });
 
-  // Official YouTube subscribe button (Google platform.js + g-ytsubscribe)
-  const ytWidget = document.querySelector('#youtube-widget');
+  // YouTube subscribe button
+  var ytWidget = document.querySelector('#youtube-widget');
   loadScriptWhenVisible(
     ytWidget,
     'https://apis.google.com/js/platform.js',
-    () => !!(window.gapi || document.querySelector('.yt-widget-bar iframe'))
+    function () {
+      return !!(window.gapi || document.querySelector('.yt-widget-bar iframe'));
+    }
   );
 })();

@@ -4,19 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page not found — Your Learning Scientist</title>
-  <meta name="theme-color" content="#1E3A8A" />
+  <meta name="theme-color" content="#12358A" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0A0F18" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,600,700&display=swap" rel="stylesheet" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('yls-theme');
+        var theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
   <style>
-    :root {
-      --paper: #F6F8FB;
-      --ink: #0B1D36;
-      --muted: #5A6B7D;
-      --navy: #1E3A8A;
-      --navy-deep: #152C6B;
-      --mark: #D6F26A;
-      --rule: #D0D9E6;
+    :root, [data-theme="light"] {
+      color-scheme: light;
+      --paper: #F3F5F9;
+      --ink: #0A1220;
+      --muted: #3A4A5C;
+      --navy: #12358A;
+      --navy-fill: #153D99;
+      --navy-deep: #0C2766;
+      --mark: #C8E63A;
+      --mark-ink: #1A2808;
+      --rule: #B4C0D2;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #0A0F18;
+      --ink: #F2F5FA;
+      --muted: #B0BCCE;
+      --navy: #8BB0FF;
+      --navy-fill: #3B6FE8;
+      --navy-deep: #A8C4FF;
+      --mark: #D4F05A;
+      --mark-ink: #152008;
+      --rule: #2C384C;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --paper: #0A0F18;
+        --ink: #F2F5FA;
+        --muted: #B0BCCE;
+        --navy: #8BB0FF;
+        --navy-fill: #3B6FE8;
+        --navy-deep: #A8C4FF;
+        --mark: #D4F05A;
+        --mark-ink: #152008;
+        --rule: #2C384C;
+      }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -30,10 +72,7 @@
       padding: 24px;
       -webkit-font-smoothing: antialiased;
     }
-    .wrap {
-      text-align: center;
-      max-width: 420px;
-    }
+    .wrap { text-align: center; max-width: 420px; }
     .code {
       font-weight: 700;
       font-size: 4.5rem;
@@ -47,15 +86,16 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
+      color: var(--ink);
     }
     h1 .mark {
       background-image: linear-gradient(
-        transparent 58%,
-        var(--mark) 58%,
-        var(--mark) 94%,
-        transparent 94%
+        transparent 55%,
+        var(--mark) 55%,
+        var(--mark) 96%,
+        transparent 96%
       );
-      padding: 0 0.08em;
+      padding: 0 0.1em;
     }
     p {
       color: var(--muted);
@@ -69,20 +109,20 @@
       justify-content: center;
       min-height: 52px;
       padding: 0.875rem 1.5rem;
-      background: var(--navy);
+      background: var(--navy-fill);
       color: #fff;
       text-decoration: none;
       border-radius: 12px;
       font-weight: 600;
-      border: 1px solid var(--navy);
+      border: 1px solid var(--navy-fill);
       transition: background 0.15s ease, box-shadow 0.15s ease;
     }
     a:hover {
-      background: var(--navy-deep);
       box-shadow: inset 4px 0 0 var(--mark);
+      filter: brightness(1.05);
     }
     a:focus-visible {
-      outline: 2px solid #3B82F6;
+      outline: 2px solid var(--navy);
       outline-offset: 3px;
     }
   </style>
