@@ -33,7 +33,7 @@
       generic.setAttribute('name', 'theme-color');
       document.head.appendChild(generic);
     }
-    generic.setAttribute('content', theme === 'dark' ? '#0A0F18' : '#12358A');
+    generic.setAttribute('content', theme === 'dark' ? '#0B100E' : '#0C7A62');
 
     var btn = document.getElementById('theme-toggle');
     if (btn) {

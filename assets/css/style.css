@@ -1,37 +1,38 @@
 /* ==========================================================
-   Your Learning Scientist — Annotated Desk
-   High-contrast light + dark. Citron research mark.
-   Satoshi · Source Serif 4 · IBM Plex Mono
+   Your Learning Scientist
+   Growth teal + citron mark (not corporate navy).
+   Light + dark. Satoshi · Source Serif 4 · IBM Plex Mono
    ========================================================== */
 
-/* ---- Light (default) — WCAG-minded contrast ---- */
+/* ---- Light ---- */
 :root,
 [data-theme="light"] {
   color-scheme: light;
 
-  --paper:        #F3F5F9;
+  --paper:        #F5F4F0;   /* warm stone — not blue-gray */
   --surface:      #FFFFFF;
-  --surface-2:    #E4EAF4;
-  --ink:          #0A1220;
-  --ink-soft:     #1A2436;
-  --muted:        #3A4A5C;   /* ~7:1 on paper */
-  --muted-soft:   #516274;
-  --navy:         #12358A;   /* deeper than #1E3A8A for text/links */
-  --navy-deep:    #0C2766;
-  --navy-fill:    #153D99;   /* primary button */
-  --signal:       #0B4FD6;   /* link / focus — darker blue for light bg */
-  --mark:         #C8E63A;   /* citron, slightly richer */
+  --surface-2:    #E7EBE6;
+  --ink:          #141A16;
+  --ink-soft:     #24302A;
+  --muted:        #3E4A43;
+  --muted-soft:   #5A675F;
+  /* brand = deep teal (growth / calm science) — CSS names kept as --navy* for less churn */
+  --navy:         #0A6B56;
+  --navy-deep:    #085445;
+  --navy-fill:    #0C7A62;
+  --signal:       #0D8A6E;
+  --mark:         #D2EB4A;   /* highlighter */
   --mark-ink:     #1A2808;
-  --rule:         #B4C0D2;
-  --rule-strong:  #8A9BB0;
-  --chip-text:    #1A2A44;
+  --rule:         #C4CDC6;
+  --rule-strong:  #98A69C;
+  --chip-text:    #1A2A22;
   --btn-primary-fg: #FFFFFF;
-  --btn-secondary-border: #2A3A52;
+  --btn-secondary-border: #2A3A32;
   --avatar-ring:  #FFFFFF;
-  --player-bg:    #0A1220;
-  --shadow:       0 1px 2px rgba(10, 18, 32, 0.06), 0 10px 28px rgba(10, 18, 32, 0.08);
-  --shadow-sm:    0 1px 2px rgba(10, 18, 32, 0.06);
-  --theme-icon:   #0A1220;
+  --player-bg:    #141A16;
+  --shadow:       0 1px 2px rgba(20, 26, 22, 0.06), 0 10px 28px rgba(20, 26, 22, 0.07);
+  --shadow-sm:    0 1px 2px rgba(20, 26, 22, 0.06);
+  --theme-icon:   #141A16;
   --topbar-bg:    color-mix(in srgb, var(--paper) 92%, transparent);
 }
 
@@ -39,29 +40,29 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --paper:        #0A0F18;
-  --surface:      #141B28;
-  --surface-2:    #1C2536;
-  --ink:          #F2F5FA;
-  --ink-soft:     #DCE3EE;
-  --muted:        #B0BCCE;   /* light enough on near-black */
-  --muted-soft:   #8E9BB0;
-  --navy:         #8BB0FF;   /* light navy for text/links on dark */
-  --navy-deep:    #A8C4FF;
-  --navy-fill:    #3B6FE8;   /* solid CTA still readable */
-  --signal:       #8BB8FF;
-  --mark:         #D4F05A;
+  --paper:        #0B100E;
+  --surface:      #151C19;
+  --surface-2:    #1C2621;
+  --ink:          #F0F5F2;
+  --ink-soft:     #D5E0DA;
+  --muted:        #A8B8B0;
+  --muted-soft:   #879990;
+  --navy:         #5ED9B8;   /* light teal for links on dark */
+  --navy-deep:    #8AE8CD;
+  --navy-fill:    #14967A;
+  --signal:       #6EE7C5;
+  --mark:         #D2EB4A;
   --mark-ink:     #152008;
-  --rule:         #2C384C;
-  --rule-strong:  #3E4E66;
-  --chip-text:    #E8EEF8;
+  --rule:         #2A3630;
+  --rule-strong:  #3E4E46;
+  --chip-text:    #E8F0EB;
   --btn-primary-fg: #FFFFFF;
-  --btn-secondary-border: #6B7C96;
-  --avatar-ring:  #1C2536;
+  --btn-secondary-border: #6B7C74;
+  --avatar-ring:  #1C2621;
   --player-bg:    #000000;
   --shadow:       0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
   --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.35);
-  --theme-icon:   #F2F5FA;
+  --theme-icon:   #F0F5F2;
   --topbar-bg:    color-mix(in srgb, var(--paper) 90%, transparent);
 }
 
@@ -70,29 +71,29 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
 
-    --paper:        #0A0F18;
-    --surface:      #141B28;
-    --surface-2:    #1C2536;
-    --ink:          #F2F5FA;
-    --ink-soft:     #DCE3EE;
-    --muted:        #B0BCCE;
-    --muted-soft:   #8E9BB0;
-    --navy:         #8BB0FF;
-    --navy-deep:    #A8C4FF;
-    --navy-fill:    #3B6FE8;
-    --signal:       #8BB8FF;
-    --mark:         #D4F05A;
+    --paper:        #0B100E;
+    --surface:      #151C19;
+    --surface-2:    #1C2621;
+    --ink:          #F0F5F2;
+    --ink-soft:     #D5E0DA;
+    --muted:        #A8B8B0;
+    --muted-soft:   #879990;
+    --navy:         #5ED9B8;
+    --navy-deep:    #8AE8CD;
+    --navy-fill:    #14967A;
+    --signal:       #6EE7C5;
+    --mark:         #D2EB4A;
     --mark-ink:     #152008;
-    --rule:         #2C384C;
-    --rule-strong:  #3E4E66;
-    --chip-text:    #E8EEF8;
+    --rule:         #2A3630;
+    --rule-strong:  #3E4E46;
+    --chip-text:    #E8F0EB;
     --btn-primary-fg: #FFFFFF;
-    --btn-secondary-border: #6B7C96;
-    --avatar-ring:  #1C2536;
+    --btn-secondary-border: #6B7C74;
+    --avatar-ring:  #1C2621;
     --player-bg:    #000000;
     --shadow:       0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
     --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.35);
-    --theme-icon:   #F2F5FA;
+    --theme-icon:   #F0F5F2;
     --topbar-bg:    color-mix(in srgb, var(--paper) 90%, transparent);
   }
 }
@@ -199,18 +200,39 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   min-width: 0;
 }
 
-/* Simple YLS wordmark */
+/* Simple logo: badge + YLS */
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-ui);
   font-weight: 700;
-  font-size: 1.0625rem;
-  letter-spacing: 0.04em;
   color: var(--navy);
   line-height: 1;
-  transition: color 0.15s ease;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
 }
 .logo:hover {
-  color: var(--signal);
+  opacity: 0.85;
+}
+
+.logo-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  background: var(--navy-fill);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.logo-word {
+  font-size: 1.0625rem;
+  letter-spacing: 0.06em;
 }
 
 .topbar-actions {
