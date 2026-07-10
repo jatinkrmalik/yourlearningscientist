@@ -26,7 +26,6 @@
       } catch (e) {}
     }
 
-    // Generic theme-color for browsers that ignore media queries
     var generic = document.querySelector('meta[name="theme-color"]:not([media])');
     if (!generic) {
       generic = document.createElement('meta');
@@ -45,7 +44,6 @@
     }
   }
 
-  // Sync UI to current theme (do not force-persist system default)
   setTheme(getTheme(), false);
 
   var toggle = document.getElementById('theme-toggle');
@@ -55,7 +53,6 @@
     });
   }
 
-  // Follow OS only when the user has not chosen explicitly
   try {
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
     var onChange = function () {
@@ -70,7 +67,7 @@
     if (mq.addEventListener) mq.addEventListener('change', onChange);
     else if (mq.addListener) mq.addListener(onChange);
   } catch (e) {}
-  // Smooth scroll for in-page anchors
+
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (event) {
       var href = anchor.getAttribute('href');
@@ -87,7 +84,6 @@
     });
   });
 
-  // Horizontal scroller state
   var scroller = document.querySelector('.video-scroller');
   if (scroller) {
     var update = function () {
@@ -97,72 +93,4 @@
     update();
     window.addEventListener('resize', update, { passive: true });
   }
-
-  function loadScriptWhenVisible(el, src, globalCheck) {
-    return new Promise(function (resolve) {
-      if (!el) {
-        resolve(false);
-        return;
-      }
-      if (globalCheck && globalCheck()) {
-        resolve(true);
-        return;
-      }
-
-      var started = false;
-      var start = function () {
-        if (started) return;
-        started = true;
-        if (globalCheck && globalCheck()) {
-          resolve(true);
-          return;
-        }
-        var existing = document.querySelector('script[src="' + src + '"]');
-        if (existing) {
-          existing.addEventListener('load', function () {
-            resolve(true);
-          });
-          if (globalCheck && globalCheck()) resolve(true);
-          return;
-        }
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = src;
-        script.onload = function () {
-          resolve(true);
-        };
-        script.onerror = function () {
-          resolve(false);
-        };
-        document.body.appendChild(script);
-      };
-
-      if (!('IntersectionObserver' in window)) {
-        start();
-        return;
-      }
-      var io = new IntersectionObserver(
-        function (entries) {
-          if (entries.some(function (e) {
-            return e.isIntersecting;
-          })) {
-            start();
-            io.disconnect();
-          }
-        },
-        { rootMargin: '200px 0px' }
-      );
-      io.observe(el);
-    });
-  }
-
-  // YouTube subscribe button (official Google widget)
-  var ytWidget = document.querySelector('#youtube-widget');
-  loadScriptWhenVisible(
-    ytWidget,
-    'https://apis.google.com/js/platform.js',
-    function () {
-      return !!(window.gapi || document.querySelector('.yt-widget-bar iframe'));
-    }
-  );
 })();

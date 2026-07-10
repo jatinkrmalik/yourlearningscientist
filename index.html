@@ -207,27 +207,12 @@
           </svg>
         </a>
       </nav>
-      <button
-        type="button"
-        class="theme-toggle"
-        id="theme-toggle"
-        aria-label="Toggle dark mode"
-        title="Toggle light / dark"
-      >
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/>
-        </svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-        </svg>
-      </button>
     </div>
   </header>
 
   <main id="main" class="shell">
 
-    <!-- Above the fold: value prop → who → proof chips → CTAs -->
+    <!-- Above the fold: value → proof → primary CTA → secondary links -->
     <section id="top" class="hero" aria-label="Your Learning Scientist">
       <p class="eyebrow">For parents &amp; educators</p>
 
@@ -237,7 +222,7 @@
       </h1>
 
       <p class="subline">
-        I read the developmental science so you don't have to. Then I tell you what it means for the kid in front of you.
+        Developmental science, translated for the kid in your living room.
       </p>
 
       <div class="identity">
@@ -256,6 +241,10 @@
         </div>
       </div>
 
+      <p class="proof-line">
+        MS Northwestern · 8+ years in classrooms · Shorts under 60s
+      </p>
+
       <div class="cta-stack">
         <a
           class="btn btn-primary"
@@ -266,23 +255,26 @@
           <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/>
           </svg>
-          <span>Subscribe on YouTube</span>
+          <span>Watch free Shorts on YouTube</span>
           <span class="btn-chevron" aria-hidden="true">→</span>
         </a>
-        <a
-          class="btn btn-secondary"
-          href="https://www.instagram.com/yourlearningscientist"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          <span>Follow on Instagram</span>
-          <span class="btn-chevron" aria-hidden="true">→</span>
-        </a>
+
+        <div class="cta-secondary-row">
+          <a
+            class="link-quiet"
+            href="https://www.instagram.com/yourlearningscientist"
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+            <span class="link-quiet-meta">active daily</span>
+          </a>
+          <span class="cta-dot" aria-hidden="true">·</span>
+          <a class="link-quiet" href="#work">
+            Work with me
+            <span class="link-quiet-meta">brands &amp; speaking</span>
+          </a>
+        </div>
       </div>
 
       <ul class="chips" aria-label="Topics">
@@ -294,7 +286,7 @@
       </ul>
     </section>
 
-    <!-- Featured Shorts -->
+    <!-- Featured Shorts (proof) -->
     <section id="watch" class="section watch" aria-labelledby="watch-title">
       <header class="section-head">
         <h2 id="watch-title" class="section-title">Watch</h2>
@@ -310,7 +302,7 @@
             </span>
           </div>
           <h3 class="video-title">Better than screens: 5 hands-on gadgets</h3>
-          <p class="video-meta">Short · toys &amp; play</p>
+          <p class="video-meta">12K views · toys &amp; play</p>
         </a>
 
         <a class="video-card" role="listitem" href="https://www.youtube.com/shorts/P6pUg-fVWqk" target="_blank" rel="noopener">
@@ -321,7 +313,7 @@
             </span>
           </div>
           <h3 class="video-title">10 books that teach emotions &amp; values</h3>
-          <p class="video-meta">Short · books</p>
+          <p class="video-meta">3.6K views · books</p>
         </a>
 
         <a class="video-card" role="listitem" href="https://www.youtube.com/shorts/xMMVUVNzvcE" target="_blank" rel="noopener">
@@ -332,7 +324,7 @@
             </span>
           </div>
           <h3 class="video-title">The parenting bias no one warns you about</h3>
-          <p class="video-meta">Short · cognition</p>
+          <p class="video-meta">1.7K views · cognition</p>
         </a>
 
         <a class="video-card" role="listitem" href="https://www.youtube.com/shorts/btOBmOEW11I" target="_blank" rel="noopener">
@@ -343,92 +335,55 @@
             </span>
           </div>
           <h3 class="video-title">Language learning milestones</h3>
-          <p class="video-meta">Short · language</p>
+          <p class="video-meta">1.2K views · language</p>
         </a>
       </div>
 
-      <!-- Official YouTube channel widget: subscribe + uploads playlist player -->
-      <div class="yt-widget" id="youtube-widget">
-        <div class="yt-widget-bar">
-          <div class="yt-widget-meta">
-            <p class="yt-widget-label">Channel</p>
-            <a
-              class="yt-widget-handle"
-              href="https://www.youtube.com/@YourLearningScientist"
-              target="_blank"
-              rel="noopener"
-            >@YourLearningScientist</a>
-          </div>
-          <!-- Official Google YouTube subscribe button (hydrated by platform.js) -->
-          <div
-            class="g-ytsubscribe"
-            data-channelid="UCn2O02ZcnIawo90tQ_4sw7g"
-            data-layout="default"
-            data-count="default"
-            data-theme="default"
-          ></div>
-        </div>
-
-        <div class="yt-player-wrap">
-          <!-- Featured Short (highest views) — clearer than empty playlist chrome -->
-          <iframe
-            class="yt-player"
-            src="https://www.youtube.com/embed/MPU8haV5ovY"
-            title="Better than screens: 5 hands-on gadgets — Your Learning Scientist"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
-        </div>
-
-        <p class="yt-widget-note">
-          Featured Short. More on
-          <a href="https://www.youtube.com/@YourLearningScientist" target="_blank" rel="noopener">YouTube</a>.
-        </p>
-      </div>
-
-      <a class="text-link" href="https://www.youtube.com/@YourLearningScientist" target="_blank" rel="noopener">
-        Open full channel <span aria-hidden="true">→</span>
+      <!-- Repeat primary CTA after proof -->
+      <a
+        class="btn btn-primary btn-after-proof"
+        href="https://www.youtube.com/@YourLearningScientist?sub_confirmation=1"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/>
+        </svg>
+        <span>Watch free Shorts on YouTube</span>
+        <span class="btn-chevron" aria-hidden="true">→</span>
       </a>
     </section>
 
-    <!-- About (credibility before hire) -->
+    <!-- About — short for bio hub -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <header class="section-head">
         <h2 id="about-title" class="section-title">About Treta</h2>
-        <p class="section-deck">Learning scientist. Curriculum designer. I speak research.</p>
       </header>
 
       <div class="about-body">
         <p>
-          I'm a learning scientist with an MS in Education and Social Policy
-          (Learning Sciences and Educational Technology) from Northwestern.
-          On Your Learning Scientist I turn child-development research into
-          short, practical videos for parents and educators.
-        </p>
-        <p>
-          For 8+ years I designed curricula and trained teachers across India
-          and the US, at Teach for India, the Shiv Nadar Foundation, and LEAD EdTech.
-          At LEAD I analyzed learning data for 1.2M+ students across thousands
-          of schools. Now I share what the research actually says about screens,
-          books, language, bias, and how kids learn.
+          Learning scientist (MS, Northwestern). 8+ years designing curricula
+          and training teachers at Teach for India, Shiv Nadar, and LEAD EdTech.
+          I turn child-development research into Shorts parents can use tonight.
         </p>
       </div>
 
       <ul class="fact-chips" aria-label="Credentials">
-        <li>MS, Learning Sciences · Northwestern</li>
+        <li>MS Learning Sciences · Northwestern</li>
         <li>8+ years curriculum &amp; teacher training</li>
-        <li>Teach for India · Shiv Nadar · LEAD</li>
-        <li>Mountain View, CA · India</li>
+        <li>Mountain View · India</li>
       </ul>
+
+      <a class="text-link" href="https://tretasharma.com" target="_blank" rel="noopener">
+        Full portfolio at tretasharma.com <span aria-hidden="true">→</span>
+      </a>
     </section>
 
     <!-- Work with me -->
     <section id="work" class="section work" aria-labelledby="work-title">
       <header class="section-head">
         <h2 id="work-title" class="section-title">Work with me</h2>
-        <p class="section-deck">Brand partnerships, consulting, and speaking. I reply within 48 hours.</p>
+        <p class="section-deck">Brand partnerships, consulting, and speaking. Reply within 48 hours.</p>
       </header>
 
       <div class="link-list">
@@ -448,14 +403,6 @@
           <span class="link-chevron" aria-hidden="true">→</span>
         </a>
 
-        <a class="link-row" href="https://tretasharma.com" target="_blank" rel="noopener">
-          <div class="link-body">
-            <h3>Full portfolio</h3>
-            <p>Curriculum, research, and professional work.</p>
-          </div>
-          <span class="link-chevron" aria-hidden="true">→</span>
-        </a>
-
         <a class="link-row" href="https://www.linkedin.com/in/tretasharma" target="_blank" rel="noopener">
           <div class="link-body">
             <h3>LinkedIn</h3>
@@ -466,11 +413,11 @@
       </div>
     </section>
 
-    <!-- Instagram — theme-aware card (official embed is always light and clashes in dark mode) -->
+    <!-- Instagram — quiet secondary, soft stats -->
     <section id="instagram" class="section instagram" aria-labelledby="instagram-title">
       <header class="section-head">
         <h2 id="instagram-title" class="section-title">Instagram</h2>
-        <p class="section-deck">Short-form research, same voice as the channel.</p>
+        <p class="section-deck">Same research voice, short form.</p>
       </header>
 
       <a
@@ -501,24 +448,26 @@
           </span>
         </div>
         <p class="ig-card-bio">Building better brains. I speak research.</p>
-        <dl class="ig-card-stats">
-          <div>
-            <dt>1.4K</dt>
-            <dd>Followers</dd>
-          </div>
-          <div>
-            <dt>32</dt>
-            <dd>Posts</dd>
-          </div>
-          <div>
-            <dt>USA · India</dt>
-            <dd>Based</dd>
-          </div>
-        </dl>
+        <p class="ig-card-soft">Active on Instagram · USA &amp; India</p>
         <span class="ig-card-cta">
-          Follow on Instagram
+          Follow for daily research bites
           <span aria-hidden="true">→</span>
         </span>
+      </a>
+    </section>
+
+    <!-- Soft email capture -->
+    <section class="section tip-signup" aria-labelledby="tip-title">
+      <header class="section-head">
+        <h2 id="tip-title" class="section-title">One tip, not a flood</h2>
+        <p class="section-deck">Want research you can use this week? Say hi.</p>
+      </header>
+      <a
+        class="btn btn-secondary"
+        href="mailto:tretasharma@gmail.com?subject=Parent%20tip%20list"
+      >
+        <span>Email Treta for tips</span>
+        <span class="btn-chevron" aria-hidden="true">→</span>
       </a>
     </section>
 
@@ -528,6 +477,23 @@
         © 2026 Treta Sharma ·
         <a href="https://tretasharma.com" target="_blank" rel="noopener">tretasharma.com</a>
       </p>
+      <div class="footer-tools">
+        <button
+          type="button"
+          class="theme-toggle theme-toggle-footer"
+          id="theme-toggle"
+          aria-label="Toggle dark mode"
+          title="Toggle light / dark"
+        >
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        </button>
+      </div>
       <p class="footer-credit">
         Built by <a href="https://github.com/jatinkrmalik" target="_blank" rel="noopener">Jatin K Malik</a>
       </p>

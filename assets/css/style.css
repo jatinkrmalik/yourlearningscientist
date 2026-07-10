@@ -376,11 +376,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--muted);
-  margin-bottom: 1rem;
-  max-width: 36ch;
+  margin-bottom: 0.85rem;
+  max-width: 34ch;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.45;
+}
+
+.proof-line {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin: 0 auto 1rem;
+  max-width: 40ch;
+  line-height: 1.4;
 }
 
 /* Compact who-row */
@@ -390,7 +401,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   justify-content: center;
   gap: 0.75rem;
   text-align: left;
-  margin: 0 auto 1.1rem;
+  margin: 0 auto 0.65rem;
   max-width: 340px;
   width: 100%;
   padding: 0.55rem 0.85rem;
@@ -453,11 +464,48 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 999px;
 }
 
-/* CTA stack */
+/* CTA stack — one primary, quiet secondary row */
 .cta-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
+}
+
+.cta-secondary-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.5rem;
+}
+
+.link-quiet {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+.link-quiet:hover {
+  background: var(--surface-2);
+}
+.link-quiet-meta {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.cta-dot {
+  color: var(--rule-strong);
+  font-weight: 700;
+  user-select: none;
 }
 
 .btn {
@@ -471,9 +519,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 0.975rem;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
+.btn-after-proof {
+  margin-top: 1.25rem;
+  width: 100%;
+}
 .btn-icon { flex-shrink: 0; }
-.btn span:nth-child(2) { flex: 1; text-align: left; }
+.btn > span:not(.btn-icon):not(.btn-chevron) {
+  flex: 1;
+  text-align: left;
+}
 .btn-chevron {
+  flex-shrink: 0;
   opacity: 0.85;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
@@ -647,84 +703,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-bottom-color: var(--mark);
 }
 
-/* Official YouTube channel widget */
-.yt-widget {
-  margin-top: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.yt-widget-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  padding: 0.875rem 1rem;
-  border-bottom: 1px solid var(--rule);
-  background: var(--surface);
-}
-
-.yt-widget-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.15rem;
-}
-
-.yt-widget-handle {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.01em;
-}
-.yt-widget-handle:hover {
-  color: var(--signal);
-}
-
-.yt-widget-bar .g-ytsubscribe,
-.yt-widget-bar iframe {
-  min-height: 24px;
-}
-
-.yt-player-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: var(--player-bg);
-}
-
-.yt-player {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
-.yt-widget-note {
-  padding: 0.75rem 1rem 0.875rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--muted);
-  line-height: 1.4;
-}
-.yt-widget-note a {
-  color: var(--navy);
-  font-weight: 700;
-  border-bottom: 2px solid var(--mark);
-}
-.yt-widget-note a:hover {
-  color: var(--signal);
-}
-
 /* Instagram theme-aware card */
 .ig-card {
   display: block;
@@ -785,34 +763,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 500;
   color: var(--ink-soft);
   line-height: 1.4;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.45rem;
 }
 
-.ig-card-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-  margin-bottom: 0.85rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  text-align: center;
-}
-.ig-card-stats dt {
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.ig-card-stats dd {
+.ig-card-soft {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--muted);
-  margin-top: 0.2rem;
+  margin-bottom: 0.9rem;
 }
 
 .ig-card-cta {
@@ -910,6 +870,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 999px;
 }
 
+/* Tip signup */
+.tip-signup .btn {
+  width: 100%;
+  justify-content: space-between;
+}
+
 /* Footer */
 .footer {
   margin-top: 2.5rem;
@@ -925,7 +891,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-bottom: 0.35rem;
   letter-spacing: -0.01em;
 }
-.footer-meta { margin-bottom: 0.25rem; }
+.footer-meta { margin-bottom: 0.75rem; }
 .footer a {
   color: var(--muted);
   text-decoration: underline;
@@ -933,6 +899,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 600;
 }
 .footer a:hover { color: var(--navy); }
+.footer-tools {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.theme-toggle-footer {
+  width: 36px;
+  height: 36px;
+}
 .footer-credit { font-size: 0.75rem; color: var(--muted-soft); }
 
 /* Entrance */
@@ -940,6 +915,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero .value-prop,
 .hero .subline,
 .hero .identity,
+.hero .proof-line,
 .hero .cta-stack,
 .hero .chips {
   animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -948,7 +924,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero .value-prop { animation-delay: 40ms; }
 .hero .subline { animation-delay: 70ms; }
 .hero .identity { animation-delay: 100ms; }
-.hero .cta-stack { animation-delay: 130ms; }
+.hero .proof-line { animation-delay: 120ms; }
+.hero .cta-stack { animation-delay: 140ms; }
 .hero .chips { animation-delay: 160ms; }
 
 @keyframes rise {
@@ -969,6 +946,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hero .value-prop,
   .hero .subline,
   .hero .identity,
+  .hero .proof-line,
   .hero .chips,
   .hero .cta-stack {
     animation: none;
