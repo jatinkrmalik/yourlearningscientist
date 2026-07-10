@@ -399,6 +399,59 @@ button { font: inherit; }
   border-bottom-color: var(--mark);
 }
 
+/* Instagram official profile embed */
+.instagram .section-deck .inline-handle {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--mark);
+}
+.instagram .section-deck .inline-handle:hover {
+  color: var(--signal);
+}
+
+.ig-embed-wrap {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  /* Soft frame so Meta's card sits in the desk system */
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Instagram injects iframe; keep it full-width of shell */
+.ig-embed-wrap .instagram-media {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Fallback text while embed.js loads / if blocked */
+.ig-embed-fallback {
+  margin-top: 1rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4 !important;
+}
+.ig-embed-fallback a {
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--mark);
+}
+.ig-embed-fallback a:hover { color: var(--signal); }
+
+/* Hide skeleton fallback once IG hydrates (iframe appears) */
+.ig-embed-wrap:has(iframe) .ig-embed-fallback {
+  display: none;
+}
+
 /* Work with me link list */
 .link-list {
   display: flex;
