@@ -16,7 +16,8 @@ A mobile-first single page Treta can drop in her Instagram and YouTube bios:
 
 - Static HTML + CSS + vanilla JS. No build step, no framework.
 - Fonts: Satoshi (Fontshare), Source Serif 4 + IBM Plex Mono (Google Fonts)
-- Brand system: cool paper, navy (`#1E3A8A`), citron mark (`#D6F26A`)
+- Brand system: high-contrast light + dark, navy + citron mark
+- SEO: Open Graph / Twitter cards, JSON-LD (Person + WebSite), `robots.txt`, `sitemap.xml`, web manifest
 - Designed for GitHub Pages with CNAME `yourlearningscientist.com`
 
 ## Local development
