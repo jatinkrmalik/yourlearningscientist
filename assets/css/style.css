@@ -216,6 +216,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0 auto 0.5rem;
   color: var(--ink);
 }
+.tagline .mark {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.tagline-sub {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+}
 
 .mark {
   display: inline;
