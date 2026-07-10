@@ -4,55 +4,94 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page not found — Your Learning Scientist</title>
+  <meta name="theme-color" content="#1E3A8A" />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,600,700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --paper: #F6F8FB;
+      --ink: #0B1D36;
+      --muted: #5A6B7D;
+      --navy: #1E3A8A;
+      --navy-deep: #152C6B;
+      --mark: #D6F26A;
+      --rule: #D0D9E6;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
-      color: #0f172a;
+      background: var(--paper);
+      color: var(--ink);
       padding: 24px;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { text-align: center; max-width: 480px; }
+    .wrap {
+      text-align: center;
+      max-width: 420px;
+    }
     .code {
-      font-family: 'Lora', serif;
-      font-size: 5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 4.5rem;
+      letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 12px;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
     }
-    h1 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; }
-    p { color: #475569; line-height: 1.6; margin-bottom: 28px; }
+    h1 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    h1 .mark {
+      background-image: linear-gradient(
+        transparent 58%,
+        var(--mark) 58%,
+        var(--mark) 94%,
+        transparent 94%
+      );
+      padding: 0 0.08em;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+    }
     a {
-      display: inline-block;
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0.875rem 1.5rem;
+      background: var(--navy);
+      color: #fff;
       text-decoration: none;
-      border-radius: 999px;
+      border-radius: 12px;
       font-weight: 600;
-      box-shadow: 0 8px 24px -8px rgba(30, 58, 138, 0.5);
-      transition: transform 0.2s;
+      border: 1px solid var(--navy);
+      transition: background 0.15s ease, box-shadow 0.15s ease;
     }
-    a:hover { transform: translateY(-2px); }
+    a:hover {
+      background: var(--navy-deep);
+      box-shadow: inset 4px 0 0 var(--mark);
+    }
+    a:focus-visible {
+      outline: 2px solid #3B82F6;
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="code">404</div>
-    <h1>That page is off the curriculum.</h1>
-    <p>The link you followed doesn't lead anywhere — but there's plenty of good stuff to explore from the homepage.</p>
+    <h1>That page is <span class="mark">off the curriculum</span>.</h1>
+    <p>The link you followed doesn't lead anywhere. Plenty to explore on the homepage though.</p>
     <a href="/">← Back to Your Learning Scientist</a>
   </div>
 </body>
